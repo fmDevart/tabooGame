@@ -1,0 +1,104 @@
+{
+  "cards": [
+    {
+      "obj": "computer",
+      "taboos": [
+        "keyboard",
+        "mouse",
+        "screen",
+        "internet",
+        "software"
+      ]
+    },
+    {
+      "obj": "dog",
+      "taboos": [
+        "bark",
+        "paws",
+        "fur",
+        "tail",
+        "leash"
+      ]
+    },
+    {
+      "obj": "tree",
+      "taboos": [
+        "leaves",
+        "branches",
+        "trunk",
+        "roots",
+        "shade"
+      ]
+    },
+    {
+      "obj": "pizza",
+      "taboos": [
+        "cheese",
+        "tomato",
+        "dough",
+        "pepperoni",
+        "slice"
+      ]
+    },
+    {
+      "obj": "book",
+      "taboos": [
+        "pages",
+        "cover",
+        "words",
+        "author",
+        "library"
+      ]
+    },
+    {
+      "obj": "ocean",
+      "taboos": [
+        "waves",
+        "beach",
+        "water",
+        "fish",
+        "seagull"
+      ]
+    },
+    {
+      "obj": "car",
+      "taboos": [
+        "engine",
+        "wheels",
+        "steering",
+        "gasoline",
+        "road"
+      ]
+    },
+    {
+      "obj": "sun",
+      "taboos": [
+        "shine",
+        "light",
+        "heat",
+        "sky",
+        "day"
+      ]
+    },
+    {
+      "obj": "flower",
+      "taboos": [
+        "petals",
+        "stem",
+        "blossom",
+        "fragrance",
+        "garden"
+      ]
+    },
+    {
+      "obj": "rain",
+      "taboos": [
+        "drops",
+        "wet",
+        "clouds",
+        "umbrella",
+        "puddle"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "cards": [
+    {
+      "obj": "pencil",
+      "taboos": [
+        "eraser",
+        "wood",
+        "writing",
+        "draw",
+        "lead"
+      ]
+    },
+    {
+      "obj": "beach",
+      "taboos": [
+        "sand",
+        "waves",
+        "ocean",
+        "sun",
+        "vacation"
+      ]
+    },
+    {
+      "obj": "bicycle",
+      "taboos": [
+        "wheels",
+        "pedals",
+        "ride",
+        "bike",
+        "brakes"
+      ]
+    },
+    {
+      "obj": "moon",
+      "taboos": [
+        "night",
+        "glow",
+        "celestial",
+        "orbit",
+        "craters"
+      ]
+    },
+    {
+      "obj": "planet",
+      "taboos": [
+        "orbit",
+        "space",
+        "celestial",
+        "astronomy",
+        "satellites"
+      ]
+    },
+    {
+      "obj": "raincoat",
+      "taboos": [
+        "waterproof",
+        "rainy",
+        "clothing",
+        "umbrella",
+        "protection"
+      ]
+    },
+    {
+      "obj": "tree",
+      "taboos": [
+        "leaves",
+        "branches",
+        "trunk",
+        "roots",
+        "shade"
+      ]
+    },
+    {
+      "obj": "cake",
+      "taboos": [
+        "icing",
+        "layers",
+        "dessert",
+        "birthday",
+        "candles"
+      ]
+    },
+    {
+      "obj": "computer",
+      "taboos": [
+        "keyboard",
+        "mouse",
+        "screen",
+        "internet",
+        "software"
+      ]
+    },
+    {
+      "obj": "book",
+      "taboos": [
+        "pages",
+        "cover",
+        "words",
+        "author",
+        "library"
+      ]
+    }
+  ]
+}

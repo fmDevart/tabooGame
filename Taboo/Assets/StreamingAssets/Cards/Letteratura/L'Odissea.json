@@ -1,0 +1,104 @@
+{
+  "cards": [
+    {
+      "obj": "guitar",
+      "taboos": [
+        "strings",
+        "fretboard",
+        "music",
+        "chords",
+        "amplifier"
+      ]
+    },
+    {
+      "obj": "mountain",
+      "taboos": [
+        "peak",
+        "altitude",
+        "scenery",
+        "hiking",
+        "landscape"
+      ]
+    },
+    {
+      "obj": "cake",
+      "taboos": [
+        "icing",
+        "layers",
+        "dessert",
+        "birthday",
+        "candles"
+      ]
+    },
+    {
+      "obj": "clock",
+      "taboos": [
+        "hands",
+        "numbers",
+        "time",
+        "tick",
+        "alarm"
+      ]
+    },
+    {
+      "obj": "bird",
+      "taboos": [
+        "feathers",
+        "wings",
+        "nest",
+        "tweet",
+        "flight"
+      ]
+    },
+    {
+      "obj": "fire",
+      "taboos": [
+        "flames",
+        "heat",
+        "campfire",
+        "burn",
+        "fuel"
+      ]
+    },
+    {
+      "obj": "shoes",
+      "taboos": [
+        "laces",
+        "soles",
+        "footwear",
+        "walk",
+        "comfort"
+      ]
+    },
+    {
+      "obj": "moon",
+      "taboos": [
+        "night",
+        "glow",
+        "celestial",
+        "orbit",
+        "craters"
+      ]
+    },
+    {
+      "obj": "camera",
+      "taboos": [
+        "lens",
+        "photography",
+        "shutter",
+        "capture",
+        "focus"
+      ]
+    },
+    {
+      "obj": "rainbow",
+      "taboos": [
+        "colors",
+        "arch",
+        "sky",
+        "light",
+        "weather"
+      ]
+    }
+  ]
+}
