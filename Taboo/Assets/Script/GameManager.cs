@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public delegate void CardFilledEventHandler();
+public delegate void CatChangedEventHandler();
 public class GameManager : MonoBehaviour
 {
 
@@ -9,12 +10,19 @@ public class GameManager : MonoBehaviour
 
 
     public static event CardFilledEventHandler CardsFilled;
+    public static event CatChangedEventHandler CatChanged;
+
 
     [SerializeField]
     public Dictionary<string, List<Deck>> catAndDecks = new Dictionary<string, List<Deck>>();
 
     [SerializeField]
     public string selectedCat;
+
+    private string oldCat;
+
+    [SerializeField]
+    public Deck selectedDeck;
 
     public List<string> decks;
 
@@ -38,30 +46,33 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
-        if(catAndDecks.Count > 0 && !string.IsNullOrEmpty(selectedCat))
-        {
-            OnValidate();
-        }
+        UpdateCats();
 
     }
 
     //Funzione per aggiornare la lista dei deck al cambiare della categoria
-    private void OnValidate()
+    private void UpdateCats()
     {
-        if (!string.IsNullOrEmpty(selectedCat) && catAndDecks.ContainsKey(selectedCat))
+        if (!string.IsNullOrEmpty(selectedCat) && catAndDecks.ContainsKey(selectedCat) && catAndDecks.Count > 0)
         {
-            decks.Clear();
+            if (oldCat != selectedCat) {
+                oldCat = selectedCat;
+                decks.Clear();
 
-            foreach (Deck d in catAndDecks[selectedCat])
-            {
-                decks.Add(d.name);
+                foreach (Deck d in catAndDecks[selectedCat])
+                {
+                    decks.Add(d.name);
+                }
+                CatChanged?.Invoke();
+
+
             }
-
+            
 
         }
         else
         {
-            decks.Clear();
+            ClearAll();
         }
     }
 
@@ -83,7 +94,24 @@ public class GameManager : MonoBehaviour
     {
         return catAndDecks;
     }
+    
+    public List<Deck> getDecks()
+    {
+        return catAndDecks[selectedCat];
+    }
+    public void ClearAll() 
+    {
+        decks.Clear();
+        selectedCat = null;
+        selectedDeck = null;
+        CatChanged?.Invoke();
+    }
+    public void setDeck(int i) {
 
+        selectedDeck = catAndDecks[selectedCat][i];
+    }
+
+    
 
 
 }
