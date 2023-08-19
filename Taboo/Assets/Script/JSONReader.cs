@@ -6,8 +6,6 @@ using UnityEngine.Networking;
 
 public class JSONReader : MonoBehaviour
 {
-
-    public TextAsset textJSON;
     private string mainDir = "Cards";
 
     // Start is called before the first frame update
