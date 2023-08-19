@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    //Funzione per aggiornare la lista dei deck al cambiare della categoria
     private void OnValidate()
     {
         if (!string.IsNullOrEmpty(selectedCat) && catAndDecks.ContainsKey(selectedCat))
