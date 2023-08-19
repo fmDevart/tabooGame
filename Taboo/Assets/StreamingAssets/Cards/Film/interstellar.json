@@ -1,103 +1,103 @@
 {
   "cards": [
     {
-      "obj": "computer",
+      "obj": "guitar",
       "taboos": [
-        "keyboard",
-        "mouse",
-        "screen",
-        "internet",
-        "software"
+        "strings",
+        "chords",
+        "pick",
+        "amplifier",
+        "rock"
       ]
     },
     {
-      "obj": "dog",
+      "obj": "cat",
       "taboos": [
-        "bark",
-        "paws",
-        "fur",
-        "tail",
-        "leash"
+        "meow",
+        "whiskers",
+        "claws",
+        "yarn",
+        "nap"
       ]
     },
     {
-      "obj": "tree",
+      "obj": "mountain",
       "taboos": [
-        "leaves",
-        "branches",
-        "trunk",
-        "roots",
-        "shade"
+        "summit",
+        "hike",
+        "valley",
+        "crag",
+        "landscape"
       ]
     },
     {
-      "obj": "pizza",
+      "obj": "cupcake",
       "taboos": [
-        "cheese",
-        "tomato",
-        "dough",
-        "pepperoni",
-        "slice"
+        "frosting",
+        "sprinkles",
+        "cake",
+        "sweet",
+        "dessert"
       ]
     },
     {
-      "obj": "book",
+      "obj": "pen",
       "taboos": [
-        "pages",
-        "cover",
-        "words",
-        "author",
-        "library"
+        "ink",
+        "paper",
+        "writing",
+        "nib",
+        "stationery"
       ]
     },
     {
-      "obj": "ocean",
+      "obj": "beach",
       "taboos": [
+        "sand",
         "waves",
-        "beach",
-        "water",
-        "fish",
-        "seagull"
+        "seashells",
+        "sunscreen",
+        "swim"
       ]
     },
     {
-      "obj": "car",
+      "obj": "bike",
       "taboos": [
-        "engine",
-        "wheels",
-        "steering",
-        "gasoline",
-        "road"
+        "pedals",
+        "handlebars",
+        "chain",
+        "tire",
+        "ride"
       ]
     },
     {
-      "obj": "sun",
+      "obj": "moon",
       "taboos": [
-        "shine",
-        "light",
-        "heat",
-        "sky",
-        "day"
+        "craters",
+        "night",
+        "space",
+        "lunar",
+        "orbit"
       ]
     },
     {
-      "obj": "flower",
+      "obj": "butterfly",
       "taboos": [
-        "petals",
-        "stem",
-        "blossom",
-        "fragrance",
+        "wings",
+        "caterpillar",
+        "nectar",
+        "flutter",
         "garden"
       ]
     },
     {
-      "obj": "rain",
+      "obj": "thunderstorm",
       "taboos": [
-        "drops",
-        "wet",
+        "lightning",
+        "rain",
+        "thunder",
         "clouds",
-        "umbrella",
-        "puddle"
+        "storm"
       ]
     }
   ]
