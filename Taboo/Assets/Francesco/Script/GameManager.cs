@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public delegate void CardFilledEventHandler();
+public delegate void SendCatsEventHandler();
+
 public class GameManager : MonoBehaviour
 {
 
@@ -9,6 +11,7 @@ public class GameManager : MonoBehaviour
 
 
     public static event CardFilledEventHandler CardsFilled;
+    public static event SendCatsEventHandler SendCats;
 
     [SerializeField]
     public Dictionary<string, List<Deck>> catAndDecks = new Dictionary<string, List<Deck>>();
@@ -31,20 +34,28 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("GAMEMANAGER - avviato");
+        SendCategories();
+        UIManager.LoadDecks +=  OnValidate;
+        
+    
+
 
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
 
-        if(catAndDecks.Count > 0 && !string.IsNullOrEmpty(selectedCat))
-        {
-            OnValidate();
-        }
-
     }
-    private void OnValidate()
+
+
+    
+
+
+    public void OnValidate()
     {
         if (!string.IsNullOrEmpty(selectedCat) && catAndDecks.ContainsKey(selectedCat))
         {
@@ -80,6 +91,13 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, List<Deck>> getAll()
     {
         return catAndDecks;
+    }
+
+
+    public void SendCategories()
+    {
+        Debug.Log("INVIO LE CATEGORIE");
+        SendCats?.Invoke();
     }
 
 

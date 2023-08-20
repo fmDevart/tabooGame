@@ -4,12 +4,13 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.Networking;
 
+
 public class JSONReader : MonoBehaviour
 {
 
     public TextAsset textJSON;
     private string mainDir = "Cards";
-
+   
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -36,8 +37,6 @@ public class JSONReader : MonoBehaviour
 
                     GameManager.instance.addDeck(catName, deckTmp);
                 }
-
-
             }
         }
         else
