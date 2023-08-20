@@ -312,7 +312,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1964806587}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -646,17 +646,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CompleteCard
       objectReference: {fileID: 0}
+    - target: {fileID: 8555658695585272413, guid: c13c17690be39cf419bf57fed0d231f5, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8696167655143516684, guid: c13c17690be39cf419bf57fed0d231f5, type: 3}
       propertyPath: m_Name
       value: CardViewer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c13c17690be39cf419bf57fed0d231f5, type: 3}
---- !u!224 &1519328597 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5760675631955702614, guid: c13c17690be39cf419bf57fed0d231f5, type: 3}
-  m_PrefabInstance: {fileID: 1519328596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1553127518
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +757,7 @@ MonoBehaviour:
   title: {fileID: 603184158}
   content: {fileID: 854815454}
   voice: {fileID: 6417593551200263173, guid: 9993a6c611a08f04b91d219cfffda071, type: 3}
-  CardViewer: {fileID: 8696167655143516684, guid: c13c17690be39cf419bf57fed0d231f5, type: 3}
+  CardViewer: {fileID: 1399585645188727564, guid: c13c17690be39cf419bf57fed0d231f5, type: 3}
   TabooWord: {fileID: 1269344524195839842, guid: 7858fcace85f7fe4b94cd44efc39b6ac, type: 3}
 --- !u!4 &1610253863
 Transform:
@@ -775,6 +774,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1911163421 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8555658695585272413, guid: c13c17690be39cf419bf57fed0d231f5, type: 3}
+  m_PrefabInstance: {fileID: 1519328596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1964806583
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,8 +871,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1519328597}
   - {fileID: 603184159}
+  - {fileID: 1911163421}
   - {fileID: 854815455}
   - {fileID: 908257370}
   m_Father: {fileID: 0}
