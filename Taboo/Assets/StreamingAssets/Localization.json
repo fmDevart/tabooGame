@@ -1,0 +1,14 @@
+{
+  "en": {
+    "category": "Category",
+    "decks":"Decks"
+  },
+  "it": {
+    "category": "Categoria",
+    "decks":"Mazzi"
+  },
+  "es": {
+    "category": "Categoría",
+    "decks":"Cubiertas"
+  }
+}
