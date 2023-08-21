@@ -24,4 +24,22 @@ public class CartButtons : MonoBehaviour
     {
         UIManager.instance.SkipCard();
     }
+    public void toggleLang() {
+
+        if (LocalizationManager.instance.currentLanguage == "it")
+        {
+            Debug.Log("togglo in en");
+            LocalizationManager.instance.SetLanguage("en");
+        }
+
+        else if (LocalizationManager.instance.currentLanguage == "en")
+        {
+            Debug.Log("togglo in es");
+            LocalizationManager.instance.SetLanguage("es");
+        }
+        else {
+            Debug.Log("togglo in it");
+            LocalizationManager.instance.SetLanguage("it");
+        }
+    }
 }

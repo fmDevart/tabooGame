@@ -7,10 +7,6 @@ public delegate void LoadDecksEventHandler();
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
-    public static event LoadDecksEventHandler LoadDecks;
-
-    [SerializeField]
-    public string[] categoriesToShow;
 
     [SerializeField]
     private GameObject title;
@@ -30,11 +26,9 @@ public class UIManager : MonoBehaviour
 
 
     private GameObject[] generatedVoices;
-    private bool LoadedDecks = false;
 
     private GameObject SpawnedCard;
     private GameObject[] SpawnedTaboos = new GameObject[5];
-    private Deck SelectedDeck;
     private List<int> AllowedIndex = new List<int>();
 
 
@@ -45,141 +39,117 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            GameManager.SendCats += SetCategoriesToShow;
+            GameManager.ReadCompleteEvent += GenerateCategoriesUI;
         }
 
     }
     void Start()
     {
         Debug.Log("UIMANAGER - avviato");
-        title.GetComponent<TMP_Text>().text = "Categoria";
+
+        //EHI LOOK!
+        //precendemente facevi: title.GetComponent<TMP_Text>().text = "Categoria";
+        //Adesso devi fare:
+        LocalizationManager.instance.SetLocalization(title.GetComponent<TMP_Text>(), "category");
+        //Successivamente devi aggiungere la chiave (Se non presente) "category" al dizionario delle traduzioni"
+        
+        GameManager.CatChanged += createUI;
 
 
     }
-
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Crea l'interfaccia utente (UI) della selezione categoria/deck.
+    /// </summary>
+    private void createUI()
     {
-        if (GameManager.instance.decks.Count > 0 && LoadedDecks == false)
+        if (GameManager.instance.getSelectedCat() != null)
         {
-            title.GetComponent<TMP_Text>().text = "Decks";
+            // EHI LOOK!
+            // Precendentemente facevi: title.GetComponent<TMP_Text>().text = "Decks";
+            // Adesso devi fare:
+            LocalizationManager.instance.SetLocalization(title.GetComponent<TMP_Text>(), "decks");
+            // Successivamente devi aggiungere la chiave (Se non presente) "decks" al dizionario delle traduzioni"
             ClearContent();
             ShowDecks();
-            LoadedDecks = true;
         }
-        else if (GameManager.instance.decks.Count == 0 && LoadedDecks == true)
+        else
         {
-            title.GetComponent<TMP_Text>().text = "Categoria";
-
+            // EHI LOOK!
+            // Precendentemente facevi: title.GetComponent<TMP_Text>().text = "Categoria";
+            // Adesso devi fare:
+            LocalizationManager.instance.SetLocalization(title.GetComponent<TMP_Text>(), "category");
+            // Successivamente devi aggiungere la chiave (Se non presente) "category" al dizionario delle traduzioni"
             ClearContent();
             GenerateCategoriesUI();
-            LoadedDecks = false;
         }
-
-
-
     }
 
 
-
-    private void SetCategoriesToShow()
-    {
-
-        Debug.Log("[UI MANAGER] set categories");
-        categoriesToShow = new List<string>(GameManager.instance.getAll().Keys).ToArray();
-        generatedVoices = new GameObject[categoriesToShow.Length];
-        GenerateCategoriesUI();
-    }
-
+    /// <summary>
+    /// Genera l'interfaccia utente delle categorie.
+    /// </summary>
     private void GenerateCategoriesUI()
     {
-
+        Debug.Log("[UI MANAGER] set categories");
+        string[] categoriesToShow = new List<string>(GameManager.instance.getAll().Keys).ToArray();
+       
+        
         generatedVoices = new GameObject[categoriesToShow.Length];
-
         for (int i = 0; i < categoriesToShow.Length; i++)
         {
-
             Debug.Log("generate categories for " + categoriesToShow[i]);
             generatedVoices[i] = Instantiate(voice, transform);
             generatedVoices[i].transform.SetParent(this.content.transform);
             generatedVoices[i].transform.GetComponentInChildren<TMP_Text>().text = categoriesToShow[i];
             int index = i;
-            generatedVoices[i].GetComponent<Button>().onClick.AddListener(() => OnClickCatUI(index));
+            generatedVoices[i].GetComponent<Button>().onClick.AddListener(() => GameManager.instance.setCat(categoriesToShow[index]));
         }
-
     }
 
-    private void OnClickCatUI(int index)
-    {
-        Debug.Log("Selezionata categoria " + categoriesToShow[index]);
-        GameManager.instance.selectedCat = categoriesToShow[index];
-        LoadDecks.Invoke();
-
-    }
-
+    /// <summary>
+    /// Cancella il contenuto dell'UI della scelta categorie/deck.
+    /// </summary>
     private void ClearContent()
     {
         foreach (GameObject voic in generatedVoices)
         {
             Destroy(voic);
         }
-
     }
 
-
-
+    /// <summary>
+    /// Mostra i vari mazzi dopo aver scelto la categoria, premendo un mazzo parte la partita. 
+    /// TODO implementare un tasto per l'avvio della partita non così. Si deve riutilizzare questo componente nelle impostazioni ergo non dover avviare sempre la partita.
+    /// </summary>
     private void ShowDecks()
     {
         Debug.Log("generate Decks");
-
-        generatedVoices = new GameObject[GameManager.instance.decks.Count];
-        for (int i = 0; i < GameManager.instance.decks.Count; i++)
+        generatedVoices = new GameObject[GameManager.instance.getDecks().Count];
+        for (int i = 0; i < GameManager.instance.getDecks().Count; i++)
         {
-
-
             generatedVoices[i] = Instantiate(voice, transform);
             generatedVoices[i].transform.SetParent(this.content.transform);
-            generatedVoices[i].transform.GetComponentInChildren<TMP_Text>().text = GameManager.instance.decks[i];
+            generatedVoices[i].transform.GetComponentInChildren<TMP_Text>().text = GameManager.instance.getDecks()[i].name;
             int deckIndex = i;
             generatedVoices[i].GetComponent<Button>().onClick.AddListener(() => StartMatch(deckIndex));
-
-
-
-
         }
-
     }
 
+    /// <summary>
+    /// Gestisce l'evento di clic su "Indietro".
+    /// </summary>
     public void OnClickBack()
     {
-        GameManager.instance.selectedCat = null;
-        GameManager.instance.OnValidate();
+        GameManager.instance.setCat(null);
     }
 
-    public void StartMatch(int deckIndex)
-    {
-        ClearContent();
-        title.SetActive(false);
-        content.SetActive(false);
-        GameObject.FindWithTag("BackBtn").gameObject.SetActive(false);
-        SpawnedCard = Instantiate(CardViewer, GameObject.FindWithTag("Canvas").transform);
-        SpawnedCard.transform.SetParent(GameObject.FindWithTag("Canvas").transform);
-        SpawnedCard.transform.SetAsFirstSibling();
-
-        SelectedDeck = GameManager.instance.catAndDecks.GetValueOrDefault(GameManager.instance.selectedCat)[deckIndex];
-
-        for (int i = 0; i < SelectedDeck.cards.Length; i++)
-        {
-            AllowedIndex.Add(i);
-        }
-
-        LoadCard(GetNextCard());
-    }
-
+    /// <summary>
+    /// Carica una carta specifica nell'UI.
+    /// </summary>
+    /// <param name="index">L'indice della carta da caricare nel deck selezionato.</param>
     private void LoadCard(int index)
     {
-
-        SpawnedCard.GetComponentInChildren<TMP_Text>().text = SelectedDeck.cards[index].obj;
+        SpawnedCard.GetComponentInChildren<TMP_Text>().text = GameManager.instance.getSelectedDeck().cards[index].obj;
         for (int i = 0; i < 5; i++)
         {
             if (SpawnedTaboos[i] != null)
@@ -188,12 +158,23 @@ public class UIManager : MonoBehaviour
             }
             SpawnedTaboos[i] = Instantiate(TabooWord, transform);
             SpawnedTaboos[i].transform.SetParent(SpawnedCard.transform.GetChild(0).transform);
-            SpawnedTaboos[i].GetComponent<TMP_Text>().text = SelectedDeck.cards[index].taboos[i];
+            SpawnedTaboos[i].GetComponent<TMP_Text>().text = GameManager.instance.getSelectedDeck().cards[index].taboos[i];
         }
-
-
-
     }
+    /// <summary>
+    /// Nasconde tutti gli elementi di UI che hanno il tag ToHideInGame.
+    /// </summary>
+    private void HideElementsInGame() {
+        GameObject[] list = GameObject.FindGameObjectsWithTag("ToHideInGame");
+        foreach(GameObject obj in list) {
+            obj.SetActive(false);
+        }
+    }
+
+
+
+
+    //TODO Spostare le successive funzioni nel manager della partita
 
     public void CompleteCard()
     {
@@ -220,6 +201,29 @@ public class UIManager : MonoBehaviour
         AllowedIndex.RemoveAt(randomIndex);
         return toReturn;
 
+    }
+
+    //TODO questa andrebbe spostata nel game manager che istanzia il matchmanager che triggera l'evento per caricare la UI della partita o qualcosa del genere
+    public void StartMatch(int deckIndex)
+    {
+        GameManager.instance.setDeck(deckIndex);
+        ClearContent();
+        title.SetActive(false);
+        content.SetActive(false);
+
+        HideElementsInGame();
+        SpawnedCard = Instantiate(CardViewer, GameObject.FindWithTag("Canvas").transform);
+        SpawnedCard.transform.SetParent(GameObject.FindWithTag("Canvas").transform);
+        SpawnedCard.transform.SetAsFirstSibling();
+
+
+
+        for (int i = 0; i < GameManager.instance.getSelectedDeck().cards.Length; i++)
+        {
+            AllowedIndex.Add(i);
+        }
+
+        LoadCard(GetNextCard());
     }
 }
 

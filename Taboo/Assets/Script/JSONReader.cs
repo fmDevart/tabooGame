@@ -28,14 +28,16 @@ public class JSONReader : MonoBehaviour
                 string[] decks = Directory.GetFiles(category, "*.json");
                 foreach (string deck in decks)
                 {
-                    string deckName = Path.GetFileName(deck);
+       
 
                     Deck deckTmp = JsonUtility.FromJson<Deck>(File.ReadAllText(deck));
                     deckTmp.name = Path.GetFileNameWithoutExtension(deck);
 
                     GameManager.instance.addDeck(catName, deckTmp);
                 }
+                
             }
+            GameManager.instance.ReadComplete();
         }
         else
         {
