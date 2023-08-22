@@ -1,14 +1,17 @@
 {
   "en": {
     "category": "Category",
-    "decks":"Decks"
+    "decks":"Decks",
+    "settings":"Settings"
   },
   "it": {
     "category": "Categoria",
-    "decks":"Mazzi"
+    "decks":"Mazzi",
+    "settings":"Impostazioni"
   },
   "es": {
     "category": "Categoría",
-    "decks":"Cubiertas"
+    "decks":"Cubiertas",
+    "settings":"Ajustes"
   }
 }
