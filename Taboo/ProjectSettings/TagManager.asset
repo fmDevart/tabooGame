@@ -7,6 +7,8 @@ TagManager:
   - CardTitle
   - Canvas
   - BackBtn
+  - ToTranslate
+  - ToHideInGame
   layers:
   - Default
   - TransparentFX
