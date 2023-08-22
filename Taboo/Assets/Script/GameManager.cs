@@ -30,12 +30,12 @@ public class GameManager : MonoBehaviour
     public static event CardFilledEventHandler CardsFilled;
 
     /// <summary>
-    /// Evento statico generato quando la lettura è completata.
+    /// Evento statico generato quando la lettura ? completata.
     /// </summary>
     public static event ReadCompleteEventHandler ReadCompleteEvent;
 
     /// <summary>
-    /// Evento statico generato quando la categoria è cambiata.
+    /// Evento statico generato quando la categoria ? cambiata.
     /// </summary>
     public static event CatChangedEventHandler CatChanged;
 
@@ -45,12 +45,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public string selectedCat;
 
-    private string oldCat;
 
     [SerializeField]
     public Deck selectedDeck;
 
     public List<string> decks;
+
+    [SerializeField]
+    public int seconds;
+
+    [SerializeField]
+    public bool sound;
+
+    [SerializeField]
+    public int nPass;
+
+    [SerializeField]
+    public int maxScore;
 
     private void Awake()
     {
@@ -143,7 +154,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Imposta la categoria selezionata.
     /// </summary>
-    /// <param name="cat">La nuova categoria da impostare. Può essere null</param>
+    /// <param name="cat">La nuova categoria da impostare. Pu? essere null</param>
     public void setCat(string cat)
     {
         selectedCat = cat;
@@ -178,10 +189,32 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Notifica che la lettura è completa. CHIAMATO SOLO DA JSONREADER
+    /// Notifica che la lettura ? completa. CHIAMATO SOLO DA JSONREADER
     /// </summary>
     public void ReadComplete()
     {
         ReadCompleteEvent.Invoke();
     }
+
+
+
+
+
+
+    
+
+
+    public void SetSeconds(int sec){seconds = sec;}
+    public int GetSeconds(){return seconds;}
+
+    public void SetSound(bool hasSound) { sound = hasSound; }
+    public bool GetSound() { return sound; }
+
+    public void SetNPass(int n) { nPass = n; }
+    public int GetNPass() { return nPass; }
+
+   
+    public void SetMaxScore(int score) { maxScore = score; }
+    public int GetMaxScore() { return maxScore; }
+
 }
